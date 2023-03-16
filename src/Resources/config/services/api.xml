@@ -1,0 +1,32 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="Ambimax\GlobalsysConnect\Api\Client" autowire="true"/>
+
+        <service id="Ambimax\GlobalsysConnect\Api\Order\OrderPost">
+            <argument type="service" id="Ambimax\GlobalsysConnect\Api\Client"/>
+            <argument type="service" id="Ambimax\GlobalsysConnect\Api\Order\OrderPost\Validation"/>
+        </service>
+
+        <service id="Ambimax\GlobalsysConnect\Api\Order\OrderGetter">
+            <argument type="service" id="Ambimax\GlobalsysConnect\Api\Client"/>
+            <argument type="service" id="Ambimax\GlobalsysConnect\Api\Order\OrderPost\Validation"/>
+        </service>
+
+        <service id="Ambimax\GlobalsysConnect\Api\Order\OrderPost\Validation"/>
+
+        <service id="Ambimax\GlobalsysConnect\Api\Product\ProductCollectionGet">
+            <argument type="service" id="Ambimax\GlobalsysConnect\Api\Client"/>
+        </service>
+
+        <service id="Ambimax\GlobalsysConnect\Api\Stock\StockCollectionGet">
+            <argument type="service" id="Ambimax\GlobalsysConnect\Api\Client"/>
+        </service>
+
+
+    </services>
+</container>

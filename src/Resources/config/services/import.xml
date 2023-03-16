@@ -1,0 +1,135 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <!--        Import-->
+        <service id="Ambimax\GlobalsysConnect\Import\Product\ProductCollection">
+            <argument type="service" id="Ambimax\GlobalsysConnect\Api\Product\ProductCollectionGet"/>
+            <argument type="service" id="product.repository"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+            <argument type="service" id="Ambimax\GlobalsysConnect\Import\Product\Processor\BaseData"/>
+            <argument type="service" id="Ambimax\GlobalsysConnect\Import\Product\Processor\Categories"/>
+            <argument type="service" id="Ambimax\GlobalsysConnect\Import\Product\Processor\CustomFields"/>
+            <argument type="service" id="Ambimax\GlobalsysConnect\Import\Product\Processor\DefaultPrice"/>
+            <argument type="service" id="Ambimax\GlobalsysConnect\Import\Product\Processor\DeliveryTime"/>
+            <argument type="service" id="Ambimax\GlobalsysConnect\Import\Product\Processor\Manufacturer"/>
+            <argument type="service" id="Ambimax\GlobalsysConnect\Import\Product\Processor\Media"/>
+            <argument type="service" id="Ambimax\GlobalsysConnect\Import\Product\Processor\Properties"/>
+            <argument type="service" id="Ambimax\GlobalsysConnect\Import\Product\Processor\VariantData"/>
+            <argument type="service" id="Ambimax\GlobalsysConnect\Import\Product\Processor\Visibilities"/>
+            <argument type="service" id="Ambimax\GlobalsysConnect\Administration\Log"/>
+            <argument type="service" id="Ambimax\GlobalsysConnect\Import\Product\ProductChangeChecker"/>
+            <argument type="service" id="Ambimax\GlobalsysConnect\Import\Product\PostCalculation"/>
+        </service>
+
+        <service id="Ambimax\GlobalsysConnect\Import\Product\ProductChangeChecker">
+            <argument type="service" id="Ambimax\GlobalsysConnect\Api\Product\ProductCollectionGet"/>
+            <argument type="service" id="product.repository"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+            <argument type="service" id="Ambimax\GlobalsysConnect\Import\Product\Processor\Categories"/>
+            <argument type="service" id="Ambimax\GlobalsysConnect\Import\Product\Processor\CustomFields"/>
+            <argument type="service" id="Ambimax\GlobalsysConnect\Import\Product\Processor\DefaultPrice"/>
+            <argument type="service" id="Ambimax\GlobalsysConnect\Import\Product\Processor\DeliveryTime"/>
+            <argument type="service" id="Ambimax\GlobalsysConnect\Import\Product\Processor\Manufacturer"/>
+            <argument type="service" id="Ambimax\GlobalsysConnect\Import\Product\Processor\Properties"/>
+            <argument type="service" id="Ambimax\GlobalsysConnect\Import\Product\Processor\VariantData"/>
+            <argument type="service" id="Ambimax\GlobalsysConnect\Administration\Log"/>
+        </service>
+
+        <service id="Ambimax\GlobalsysConnect\Import\Stock\StockCollection">
+            <argument type="service" id="Ambimax\GlobalsysConnect\Api\Stock\StockCollectionGet"/>
+            <argument type="service" id="product.repository"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+            <argument type="service" id="Ambimax\GlobalsysConnect\Administration\Log"/>
+        </service>
+
+        <service id="Ambimax\GlobalsysConnect\Import\Order\OrderCollection">
+            <argument type="service" id="Ambimax\GlobalsysConnect\Api\Order\OrderGetter"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+            <argument type="service" id="Ambimax\GlobalsysConnect\Import\Order\Processor\OrderHandler"/>
+            <argument type="service" id="Ambimax\GlobalsysConnect\Administration\Log"/>
+        </service>
+        <!--        Import Product Processor-->
+        <service id="Ambimax\GlobalsysConnect\Import\Product\Processor\BaseData"/>
+
+        <service id="Ambimax\GlobalsysConnect\Import\Product\Processor\Categories">
+            <argument type="service" id="category.repository"/>
+            <argument type="service" id="product_category.repository"/>
+        </service>
+
+        <service id="Ambimax\GlobalsysConnect\Import\Product\Processor\CustomFields"/>
+
+        <service id="Ambimax\GlobalsysConnect\Import\Product\Processor\DefaultPrice">
+            <argument type="service" id="tax.repository"/>
+        </service>
+
+        <service id="Ambimax\GlobalsysConnect\Import\Product\Processor\DeliveryTime">
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+        </service>
+
+        <service id="Ambimax\GlobalsysConnect\Import\Product\Processor\Manufacturer">
+            <argument type="service" id="product_manufacturer.repository"/>
+        </service>
+
+        <service id="Ambimax\GlobalsysConnect\Import\Product\Processor\Media">
+            <argument type="service" id="product.repository"/>
+            <argument type="service" id="media.repository"/>
+            <argument type="service" id="Ambimax\GlobalsysConnect\Import\Product\Processor\Media\FileSaver"/>
+            <argument type="service" id="media_folder.repository"/>
+        </service>
+
+        <service id="Ambimax\GlobalsysConnect\Import\Product\Processor\Media\FileSaver">
+            <argument type="service" id="Shopware\Core\Content\Media\File\FileSaver"/>
+            <argument type="service" id="Shopware\Core\Content\Media\File\FileNameProvider"/>
+        </service>
+
+        <service id="Ambimax\GlobalsysConnect\Import\Product\Processor\Properties">
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+            <argument type="service" id="property_group_option.repository"/>
+            <argument type="service" id="product_property.repository"/>
+        </service>
+
+        <service id="Ambimax\GlobalsysConnect\Import\Product\Processor\VariantData">
+            <argument type="service" id="product.repository"/>
+            <argument type="service" id="property_group_option.repository"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+            <argument type="service" id="Ambimax\GlobalsysConnect\Import\Product\Processor\VariantData\ClearanceSale"/>
+            <argument type="service" id="Ambimax\GlobalsysConnect\Import\Product\Processor\VariantData\Price"/>
+        </service>
+
+        <service id="Ambimax\GlobalsysConnect\Import\Product\Processor\VariantData\ClearanceSale">
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+        </service>
+
+        <service id="Ambimax\GlobalsysConnect\Import\Product\Processor\VariantData\Price">
+            <argument type="service" id="tax.repository"/>
+        </service>
+
+        <service id="Ambimax\GlobalsysConnect\Import\Product\Processor\Visibilities">
+            <argument type="service" id="product.repository"/>
+            <argument type="service" id="sales_channel.repository"/>
+            <argument type="service" id="category.repository"/>
+        </service>
+
+        <service id="Ambimax\GlobalsysConnect\Import\Product\PostCalculation" autowire="true"/>
+
+        <!--        Import Order Processor-->
+        <service id="Ambimax\GlobalsysConnect\Import\Order\Processor\DeliveryHandler">
+            <argument type="service" id="Shopware\Core\System\StateMachine\StateMachineRegistry"/>
+        </service>
+
+        <service id="Ambimax\GlobalsysConnect\Import\Order\Processor\TransactionHandler">
+            <argument type="service" id="Shopware\Core\System\StateMachine\StateMachineRegistry"/>
+        </service>
+
+        <service id="Ambimax\GlobalsysConnect\Import\Order\Processor\OrderHandler">
+            <argument type="service" id="order.repository"/>
+            <argument type="service" id="Ambimax\GlobalsysConnect\Import\Order\Processor\TransactionHandler"/>
+            <argument type="service" id="Ambimax\GlobalsysConnect\Import\Order\Processor\DeliveryHandler"/>
+            <argument type="service" id="Ambimax\GlobalsysConnect\Administration\Log"/>
+        </service>
+    </services>
+</container>

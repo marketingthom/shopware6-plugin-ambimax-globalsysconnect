@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/master/src/Core/System/SystemConfig/Schema/config.xsd">
+
+    <card>
+        <title>Globalsys Connect General Configuration</title>
+        <title lang="de-DE">Globalsys Connect allgemeine Konfiguration</title>
+
+        <input-field>
+            <name>apiUrl</name>
+            <label>URL to the Globalsys API</label>
+            <label lang="de-DE">URL zur Globalsys API</label>
+        </input-field>
+
+        <input-field>
+            <name>apiUser</name>
+            <label>API username</label>
+            <label lang="de-DE">API Benutzername</label>
+        </input-field>
+
+        <input-field type="password">
+            <name>apiSecret</name>
+            <label>API secret</label>
+            <label lang="de-DE">API secret</label>
+        </input-field>
+
+        <input-field type="bool">
+            <name>debugLogEnabled</name>
+            <label>Enable/disable debug logs</label>
+            <label lang="de-DE">Aktiviere/deaktiviere Debug Logs</label>
+            <helpText>During the execution of the jobs, at certain points Shopware logs will be created.</helpText>
+            <helpText lang="de-DE">Während dem Ausführen der Jobs werden an gewissen Stellen Shopware Logs erstellt.
+            </helpText>
+            <defaultValue>false</defaultValue>
+        </input-field>
+    </card>
+
+    <card>
+        <title>Sandbox Configuration</title>
+        <title lang="de-DE">Sandbox Konfiguration</title>
+
+        <input-field type="bool">
+            <name>sandboxEnabled</name>
+            <label>Enable/disable sandbox mode</label>
+            <label lang="de-DE">Aktiviere/deaktiviere Sandbox Modus</label>
+            <helpText>If enabled, orders will be exported/imported to/from a sandbox channel.</helpText>
+            <helpText lang="de-DE">Wenn aktiviert, werden Bestellungen zu/von einem Sandbox-Channel
+                exportiert/importiert.
+            </helpText>
+            <defaultValue>false</defaultValue>
+        </input-field>
+
+        <input-field>
+            <name>sandboxApiUser</name>
+            <label>Sandbox API username</label>
+            <label lang="de-DE">Sandbox API Benutzername</label>
+        </input-field>
+
+        <input-field type="password">
+            <name>sandboxApiSecret</name>
+            <label>Sandbox API secret</label>
+            <label lang="de-DE">Sandbox API secret</label>
+        </input-field>
+
+        <input-field>
+            <name>sandboxEmails</name>
+            <label>Sandbox emails for test orders</label>
+            <label lang="de-DE">Sandbox Emails für Testbestellungen</label>
+            <helpText>Type in the email addresses separated by commas.</helpText>
+            <helpText lang="de-DE">Gebe Emailadressen durch Kommata separiert ein.</helpText>
+        </input-field>
+    </card>
+
+    <card>
+        <title>Order Export Configuration</title>
+        <title lang="de-DE">Bestellexportkonfiguration</title>
+
+        <input-field type="bool">
+            <name>exportOrdersEnabled</name>
+            <label>Enable/disable order export</label>
+            <label lang="de-DE">Aktiviere/deaktiviere Bestellexport</label>
+            <helpText>Enable/disable the ScheduledTask and Command.</helpText>
+            <helpText lang="de-DE">Aktiviere/deaktiviere den ScheduledTask und Command.</helpText>
+            <defaultValue>false</defaultValue>
+        </input-field>
+
+        <input-field type="bool">
+            <name>exportOrdersSingle</name>
+            <label>Enable/disable single order export</label>
+            <label lang="de-DE">Aktiviere/deaktiviere einzelner Bestellexport</label>
+            <helpText>When exporting real orders, export only a single order.</helpText>
+            <helpText lang="de-DE">Wenn echte Bestellungen exportiert werden, wird nur eine einzelne Bestellung
+                exportiert
+            </helpText>
+            <defaultValue>false</defaultValue>
+        </input-field>
+
+        <input-field type="int">
+            <name>exportOrdersInterval</name>
+            <label>Interval for sending orders to Globalsys</label>
+            <label lang="de-DE">Interval für das Senden von Bestellungen an Globalsys</label>
+            <placeholder>In seconds</placeholder>
+            <placeholder lang="de-DE">In Sekunden</placeholder>
+            <helpText>Specify the amount of seconds to wait until the next execution of sending orders to Globalsys.
+            </helpText>
+            <helpText lang="de-DE">Gib das Interval (in Sekunden) an, mit dem Bestellungen an Globalsys gesendet werden
+                sollen.
+            </helpText>
+            <defaultValue>600</defaultValue>
+        </input-field>
+
+        <input-field type="bool">
+            <name>exportOrdersDebugLogEnabled</name>
+            <label>Enable/disable debug logs</label>
+            <label lang="de-DE">Aktiviere/deaktiviere Debug Logs</label>
+            <helpText>During the execution of this jobs, at certain points Shopware logs will be created.</helpText>
+            <helpText lang="de-DE">Während dem Ausführen dieses Jobs werden an gewissen Stellen Shopware Logs erstellt.
+            </helpText>
+            <defaultValue>false</defaultValue>
+        </input-field>
+
+        <component name="sw-entity-multi-id-select">
+            <name>exportOrdersPaymentMethods</name>
+            <entity>payment_method</entity>
+            <label>This payment methods always lead to an export</label>
+            <label lang="de-DE">Diese Bezahlarten führen immer zu einem Export</label>
+            <helpText>Orders with one of those payment methods will be exported.</helpText>
+            <helpText lang="de-DE">Bestellungen mit einer dieser Bezahlmethoden werden exportiert.</helpText>
+        </component>
+
+        <component name="sw-entity-single-select">
+            <name>exportOrderShippingMappingDHL</name>
+            <entity>shipping_method</entity>
+            <label>Choose the shipping method for 'DHL'</label>
+            <label lang="de-DE">Wähle die Versandmethode für 'DHL'</label>
+            <helpText>The string 'DHL' will be in the order export for this shipping method.</helpText>
+            <helpText lang="de-DE">Der String 'DHL' wird im Bestellexport sein für diese Versandmethode.</helpText>
+        </component>
+
+        <component name="sw-entity-single-select">
+            <name>exportOrderShippingMappingDPD</name>
+            <entity>shipping_method</entity>
+            <label>Choose the shipping method for 'DPD'</label>
+            <label lang="de-DE">Wähle die Versandmethode für 'DPD'</label>
+            <helpText>The string 'DPD' will be in the order export for this shipping method.</helpText>
+            <helpText lang="de-DE">Der String 'DPD' wird im Bestellexport sein für diese Versandmethode.</helpText>
+        </component>
+
+        <component name="sw-entity-single-select">
+            <name>exportOrderShippingMappingPickUp</name>
+            <entity>shipping_method</entity>
+            <label>Choose the shipping method for 'Abholung'</label>
+            <label lang="de-DE">Wähle die Versandmethode für 'Abholung'</label>
+            <helpText>The string 'Abholung' will be in the order export for this shipping method.</helpText>
+            <helpText lang="de-DE">Der String 'Abholung' wird im Bestellexport sein für diese Versandmethode.</helpText>
+        </component>
+    </card>
+
+    <card>
+        <title>Update Orders Configuration</title>
+        <title lang="de-DE">Bestellupdates Konfiguration</title>
+
+        <input-field type="bool">
+            <name>importOrdersEnabled</name>
+            <label>Enable/disable importing order updates</label>
+            <label lang="de-DE">Aktiviere/deaktiviere Bestellupdate Import</label>
+            <helpText>Allow importing order updats from globalsys</helpText>
+            <helpText lang="de-DE">Importieren von Bestellupdates von Globalsys erlauben</helpText>
+            <defaultValue>false</defaultValue>
+        </input-field>
+
+        <input-field type="int">
+            <name>importOrdersInterval</name>
+            <label>Interval for importing order updates from Globalsys</label>
+            <label lang="de-DE">Interval für das Importieren der Bestellupdates von Globalsys</label>
+            <placeholder>In seconds</placeholder>
+            <placeholder lang="de-DE">In Sekunden</placeholder>
+            <helpText>Specify the amount of seconds to wait until the next execution of importing orders from Globalsys.
+            </helpText>
+            <helpText lang="de-DE">Gib das Interval (in Sekunden) an, mit dem Bestellungen von Globalsys importiert
+                werden sollen.
+            </helpText>
+            <defaultValue>3600</defaultValue>
+        </input-field>
+
+        <input-field type="bool">
+            <name>importOrdersDebugLogEnabled</name>
+            <label>Enable/disable debug logs</label>
+            <label lang="de-DE">Aktiviere/deaktiviere Debug Logs</label>
+            <helpText>During the execution of this jobs, at certain points Shopware logs will be created.</helpText>
+            <helpText lang="de-DE">Während dem Ausführen dieses Jobs werden an gewissen Stellen Shopware Logs erstellt.
+            </helpText>
+            <defaultValue>false</defaultValue>
+        </input-field>
+    </card>
+
+    <card>
+        <title>Stock Import Configuration</title>
+        <title lang="de-DE">Bestandsimportkonfiguration</title>
+
+        <input-field type="bool">
+            <name>importStockEnabled</name>
+            <label>Enable/disable stock import</label>
+            <label lang="de-DE">Aktiviere/deaktiviere Bestandsimport</label>
+            <helpText>Enable/disable the ScheduledTask and Command.</helpText>
+            <helpText lang="de-DE">Aktiviere/deaktiviere den ScheduledTask und Command.</helpText>
+            <defaultValue>false</defaultValue>
+        </input-field>
+
+        <input-field type="int">
+            <name>importStockInterval</name>
+            <label>Interval for importing stocks from Globalsys</label>
+            <label lang="de-DE">Interval für das Importieren von Beständen aus Globalsys</label>
+            <placeholder>In sekunden</placeholder>
+            <placeholder lang="de-DE">In Sekunden</placeholder>
+            <helpText>Specify the amount of seconds to wait until the next execution of importing stocks from Globalsys.
+            </helpText>
+            <helpText lang="de-DE">Gib das Interval (in Sekunden) an, mit dem Bestände aus Globalsys importiert werden
+                sollen.
+            </helpText>
+            <defaultValue>300</defaultValue>
+        </input-field>
+
+        <input-field type="int">
+            <name>importStockPastMinutes</name>
+            <label>Import fetches stocks from this past minutes</label>
+            <label lang="de-DE">Import holt Bestände dieser letzten Minuten</label>
+            <placeholder>In minutes</placeholder>
+            <placeholder lang="de-DE">In Minuten</placeholder>
+            <helpText>The import fetches all stocks that have been changed in the specified past minutes.
+            </helpText>
+            <helpText lang="de-DE">Der Import ruft alle Bestände ab, die in den angegebenen letzten Minuten geändert
+                wurden.
+            </helpText>
+            <defaultValue>100</defaultValue>
+        </input-field>
+
+        <input-field type="bool">
+            <name>importStockDebugLogEnabled</name>
+            <label>Enable/disable debug logs</label>
+            <label lang="de-DE">Aktiviere/deaktiviere Debug Logs</label>
+            <helpText>During the execution of this jobs, at certain points Shopware logs will be created.</helpText>
+            <helpText lang="de-DE">Während dem Ausführen dieses Jobs werden an gewissen Stellen Shopware Logs erstellt.
+            </helpText>
+            <defaultValue>false</defaultValue>
+        </input-field>
+    </card>
+
+    <card>
+        <title>Product Import Configuration</title>
+        <title lang="de-DE">Produktimportkonfiguration</title>
+
+        <input-field type="bool">
+            <name>importProductsEnabled</name>
+            <label>Enable/disable product import</label>
+            <label lang="de-DE">Aktiviere/deaktiviere Produktimport</label>
+            <helpText>Enable/disable the ScheduledTask and Command.</helpText>
+            <helpText lang="de-DE">Aktiviere/deaktiviere den ScheduledTask und Command.</helpText>
+            <defaultValue>false</defaultValue>
+        </input-field>
+
+        <input-field type="bool">
+            <name>importProductsSkipExistingEnabled</name>
+            <label>Skip existing products during importing products from Globalsys</label>
+            <label lang="de-DE">Überspringe bereits existierende Produkte während dem Produktimport</label>
+            <helpText>The plugin looks up for an existing 'productNumber' and skips if it exists.</helpText>
+            <helpText lang="de-DE">Das Plugin schaut nach einer existierenden 'productNumber' und überspringt es, wenn
+                es
+                existiert.
+            </helpText>
+        </input-field>
+
+        <input-field type="bool">
+            <name>importProductsSetClearanceSale</name>
+            <label>Activate clearance sale while importing products</label>
+            <label lang="de-DE">Aktiviere Abverkauf während des Produktimports</label>
+            <defaultValue>false</defaultValue>
+        </input-field>
+
+        <input-field type="int">
+            <name>importProductsInterval</name>
+            <label>Interval for importing products from Globalsys</label>
+            <label lang="de-DE">Interval für das Importieren von Produkten aus Globalsys</label>
+            <placeholder>In seconds</placeholder>
+            <placeholder lang="de-DE">In Sekunden</placeholder>
+            <helpText>Specify the amount of seconds to wait until the next execution of importing products from
+                Globalsys.
+            </helpText>
+            <helpText lang="de-DE">Gib das Interval (in Sekunden) an, mit dem Produkte aus Globalsys importiert werden
+                sollen.
+            </helpText>
+            <defaultValue>600</defaultValue>
+        </input-field>
+
+        <input-field type="int">
+            <name>importProductsMaximumAge</name>
+            <label>Maximum age of products that will be imported from Globalsys</label>
+            <label lang="de-DE">Maximales Alter von Produkten, die aus Globalsys importiert werden</label>
+            <placeholder>In minutes</placeholder>
+            <placeholder lang="de-DE">In Minuten</placeholder>
+            <helpText>Specify the amount of minutes until which products will be imported from Globalsys. 0 for all.
+            </helpText>
+            <helpText lang="de-DE">Gib das Alter (in Minuten) an, bis zu dem Produkte aus Globalsys importiert werden
+                sollen. 0, für alle.
+            </helpText>
+            <defaultValue>0</defaultValue>
+        </input-field>
+
+        <input-field type="int">
+            <name>importProductsBunchSize</name>
+            <label>Size of product bunches to update into database</label>
+            <label lang="de-DE">Größe der in die Datenbank zu updatenden Produktbündel</label>
+            <helpText>Keep it empty to use the default value. (100)
+            </helpText>
+            <helpText lang="de-DE">Lass es leer, um den Standardwert zu benutzen. (100)</helpText>
+        </input-field>
+
+        <input-field type="bool">
+            <name>importProductsDebugLogEnabled</name>
+            <label>Enable/disable debug logs</label>
+            <label lang="de-DE">Aktiviere/deaktiviere Debug Logs</label>
+            <helpText>During the execution of this jobs, at certain points Shopware logs will be created.</helpText>
+            <helpText lang="de-DE">Während dem Ausführen dieses Jobs werden an gewissen Stellen Shopware Logs erstellt.
+            </helpText>
+            <defaultValue>false</defaultValue>
+        </input-field>
+
+        <component name="sw-entity-single-select">
+            <name>optionAxisId</name>
+            <entity>property_group</entity>
+            <label>Choose the 'property_group' that represents the variant axis</label>
+            <label lang="de-DE">Wähle die 'property_group', die die Variantenachse repräsentiert</label>
+            <helpText>Imported products should differ in this.</helpText>
+            <helpText lang="de-DE">Importierte Produkte sollten sich in diesem unterscheiden.</helpText>
+        </component>
+
+        <component name="sw-entity-single-select">
+            <name>productsTax</name>
+            <entity>tax</entity>
+            <label>Choose a tax for the import configuration</label>
+            <label lang="de-DE">Wähle eine Steuer für die Importkonfiguration</label>
+            <helpText>Imported products will have this tax.</helpText>
+            <helpText lang="de-DE">Importierte Produkte werden diese Steuer haben.</helpText>
+        </component>
+
+        <component name="sw-entity-single-select">
+            <name>deliveryTime</name>
+            <entity>delivery_time</entity>
+            <label>Choose the delivery time for the import configuration</label>
+            <label lang="de-DE">Wähle eine Lieferzeit für die Importkonfiguration</label>
+            <helpText>Imported products will have this delivery time.</helpText>
+            <helpText lang="de-DE">Importierte Produkte werden diese Lieferzeit haben.</helpText>
+        </component>
+    </card>
+
+    <card>
+        <title>Product Property Mapping</title>
+        <title lang="de-DE">Mapping von Produkteigenschaften</title>
+
+        <component name="sw-entity-single-select">
+            <name>AbsatzBez</name>
+            <entity>property_group</entity>
+            <label>Heel</label>
+            <label lang="de-DE">Absatz</label>
+        </component>
+
+        <component name="sw-entity-single-select">
+            <name>ErlebnisBez</name>
+            <entity>property_group</entity>
+            <label>Inner sole material</label>
+            <label lang="de-DE">Innensohlenmaterial</label>
+        </component>
+
+        <component name="sw-entity-single-select">
+            <name>FormBez</name>
+            <entity>property_group</entity>
+            <label>Gender</label>
+            <label lang="de-DE">Geschlecht</label>
+        </component>
+
+        <component name="sw-entity-single-select">
+            <name>FutterBez</name>
+            <entity>property_group</entity>
+            <label>Inner material</label>
+            <label lang="de-DE">Innenmaterial</label>
+        </component>
+
+        <component name="sw-entity-single-select">
+            <name>MaterialBez</name>
+            <entity>property_group</entity>
+            <label>Outer material</label>
+            <label lang="de-DE">Außenmaterial</label>
+        </component>
+
+        <component name="sw-entity-single-select">
+            <name>FarbBez</name>
+            <entity>property_group</entity>
+            <label>Colour</label>
+            <label lang="de-DE">Farbe</label>
+        </component>
+
+        <component name="sw-entity-single-select">
+            <name>SohleBez</name>
+            <entity>property_group</entity>
+            <label>Sole material</label>
+            <label lang="de-DE">Sohlenmaterial</label>
+        </component>
+
+        <component name="sw-entity-single-select">
+            <name>WeiteBez</name>
+            <entity>property_group</entity>
+            <label>Width</label>
+            <label lang="de-DE">Weite</label>
+        </component>
+
+        <component name="sw-entity-single-select">
+            <name>productsName</name>
+            <entity>property_group</entity>
+            <label>Model</label>
+            <label lang="de-DE">Modell</label>
+        </component>
+
+        <component name="sw-entity-single-select">
+            <name>productsWwsCode</name>
+            <entity>property_group</entity>
+            <label>ID Number</label>
+            <label lang="de-DE">Identnummer</label>
+        </component>
+    </card>
+</config>

@@ -1,0 +1,41 @@
+{
+    "name": "marketingthom/shopware6-plugin-ambimax-globalsysconnect",
+    "description": "Connect your Globalsys ERP to Shopware.",
+    "version": "1.29.2",
+    "type": "shopware-platform-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ambimax GmbH",
+            "homepage": "https://www.ambimax.de",
+            "role": "Owner"
+        },
+        {
+            "name": "Dominik Wißler",
+            "email": "dw@ambimax.de",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "ext-json": "*",
+        "shopware/core": ">=6.4.0.0 <6.5",
+        "marketingthom/composer-package-globalsys-edcsdk": "1.2.*"
+    },
+    "extra": {
+        "shopware-plugin-class": "Ambimax\\GlobalsysConnect\\AmbimaxGlobalsysConnect",
+        "plugin-icon": "src/Resources/config/ambimax.png",
+        "label": {
+            "de-DE": "Globalsys ERP Verbindung zu Shopware 6",
+            "en-GB": "Globalsys ERP connection to Shopware 6"
+        },
+        "description": {
+            "de-DE": "Verbinde Dein Globalsys ERP mit Shopware.",
+            "en-GB": "Connect your Globalsys ERP to Shopware."
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Ambimax\\GlobalsysConnect\\": "src/"
+        }
+    }
+}

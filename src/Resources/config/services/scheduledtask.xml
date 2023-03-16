@@ -1,0 +1,52 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="Ambimax\GlobalsysConnect\ScheduledTask\Export\ExportOrders">
+            <tag name="shopware.scheduled.task"/>
+        </service>
+
+        <service id="Ambimax\GlobalsysConnect\ScheduledTask\Export\ExportOrdersHandler">
+            <tag name="messenger.message_handler"/>
+            <argument type="service" id="scheduled_task.repository"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+            <argument type="service" id="Ambimax\GlobalsysConnect\Export\Order\OrderCollection"/>
+        </service>
+
+        <service id="Ambimax\GlobalsysConnect\ScheduledTask\Import\ImportProducts">
+            <tag name="shopware.scheduled.task"/>
+        </service>
+
+        <service id="Ambimax\GlobalsysConnect\ScheduledTask\Import\ImportProductsHandler">
+            <tag name="messenger.message_handler"/>
+            <argument type="service" id="scheduled_task.repository"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+            <argument type="service" id="Ambimax\GlobalsysConnect\Import\Product\ProductCollection"/>
+        </service>
+
+        <service id="Ambimax\GlobalsysConnect\ScheduledTask\Import\ImportStock">
+            <tag name="shopware.scheduled.task"/>
+        </service>
+
+        <service id="Ambimax\GlobalsysConnect\ScheduledTask\Import\ImportStockHandler">
+            <tag name="messenger.message_handler"/>
+            <argument type="service" id="scheduled_task.repository"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+            <argument type="service" id="Ambimax\GlobalsysConnect\Import\Stock\StockCollection"/>
+        </service>
+
+        <service id="Ambimax\GlobalsysConnect\ScheduledTask\Import\ImportOrders">
+            <tag name="shopware.scheduled.task"/>
+        </service>
+
+        <service id="Ambimax\GlobalsysConnect\ScheduledTask\Import\ImportOrdersHandler">
+            <tag name="messenger.message_handler"/>
+            <argument type="service" id="scheduled_task.repository"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+            <argument type="service" id="Ambimax\GlobalsysConnect\Import\Order\OrderCollection"/>
+        </service>
+    </services>
+</container>

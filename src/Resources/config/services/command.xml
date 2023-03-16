@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="Ambimax\GlobalsysConnect\Command\OrderCollectionExport">
+            <tag name="console.command"/>
+            <argument type="service" id="Ambimax\GlobalsysConnect\Export\Order\OrderCollection"/>
+        </service>
+
+        <service id="Ambimax\GlobalsysConnect\Command\ProductCollectionImport">
+            <tag name="console.command"/>
+            <argument type="service" id="Ambimax\GlobalsysConnect\Import\Product\ProductCollection"/>
+        </service>
+
+        <service id="Ambimax\GlobalsysConnect\Command\StockCollectionImportCommand">
+            <tag name="console.command"/>
+            <argument type="service" id="Ambimax\GlobalsysConnect\Import\Stock\StockCollection"/>
+        </service>
+
+        <service id="Ambimax\GlobalsysConnect\Command\OrderStatusUpdateCommand">
+            <tag name="console.command"/>
+            <argument type="service" id="Ambimax\GlobalsysConnect\Import\Order\OrderCollection"/>
+        </service>
+    </services>
+</container>
