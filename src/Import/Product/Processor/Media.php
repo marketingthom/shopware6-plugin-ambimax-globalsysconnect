@@ -12,6 +12,7 @@ use Shopware\Core\Content\Product\ProductEntity;
 use Shopware\Core\Framework\Api\Context\SystemSource;
 use Shopware\Core\Framework\Context;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityRepositoryInterface;
+use Shopware\Core\Framework\DataAbstractionLayer\EntityRepository;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Filter\EqualsFilter;
 use Shopware\Core\Framework\Uuid\Uuid;
@@ -25,14 +26,14 @@ class Media extends AbstractProcessor implements ProcessorInterface
 
     protected EntityRepositoryInterface $productRepository;
     protected FileSaver $fileSaver;
-    protected MediaFolderRepositoryDecorator $mediaFolderRepository;
-    protected MediaRepositoryDecorator $mediaRepository;
+    protected EntityRepository $mediaFolderRepository;
+    protected EntityRepository $mediaRepository;
 
     public function __construct(
         EntityRepositoryInterface      $productRepository,
-        MediaRepositoryDecorator       $mediaRepository,
+        EntityRepository       $mediaRepository,
         FileSaver                      $fileSaver,
-        MediaFolderRepositoryDecorator $mediaFolderRepository
+        EntityRepository $mediaFolderRepository
     )
     {
         $this->productRepository = $productRepository;
