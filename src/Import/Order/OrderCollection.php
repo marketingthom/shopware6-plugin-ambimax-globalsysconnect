@@ -43,19 +43,21 @@ class OrderCollection
             return;
         }
 
-        $this->orderGetter->setChangedFrom($changedFrom);
+        $this->orderGetter->setChangedFrom(strval(strtotime($changedFrom)));
         $this->orderGetter->setSandboxMode($sandboxEnabled);
         $this->orderGetter->get();
 
         $response = $this->orderGetter->getResponse();
-
+        
         if ($response->getHttpCode() !== 200) {
             $this->log->debugLog(
                 'Wrong HTTP code',
                 self::PLUGIN_SECTION,
                 [
                     'http_code' => $response->getHttpCode(),
-                    'content'   => $response->getContent()
+                    'content'   => $response->getContent(),
+                    'changedFrom' => $changedFrom,
+                    'request' => $this->orderGetter->getResponse(),
                 ]
             );
             return;

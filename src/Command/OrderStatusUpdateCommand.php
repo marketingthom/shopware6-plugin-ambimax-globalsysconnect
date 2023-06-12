@@ -45,7 +45,7 @@ class OrderStatusUpdateCommand extends Command
         $io = new ShopwareStyle($input, $output);
         $io->title('Ambimax Globalsys - Update Order Status');
 
-        $changedFrom = $input->getOption('changedFrom') != null ? $input->getOption('changedFrom') : "-24hours";
+        $changedFrom = $input->getOption('changedFrom') != null ? $input->getOption('changedFrom') : "-24 HOURS";
 
         $this->orderCollectionImport->import($changedFrom);
 

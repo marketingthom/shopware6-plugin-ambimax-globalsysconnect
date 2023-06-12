@@ -13,7 +13,14 @@
         <import resource="./services/scheduledtask.xml"/>
     </imports>
 
+
     <services>
+      <service id="Ambimax\GlobalsysConnect\Subscriber\ConfigSaveSubscriber">
+        <tag name="kernel.event_subscriber" />
+        <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+        <argument type="service" id="scheduled_task.repository"/>
+        <argument type="service" id="Ambimax\GlobalsysConnect\Administration\Log"/>
+    </service>
         <!--        Administration-->
         <service id="Ambimax\GlobalsysConnect\Administration\Log">
             <argument type="service" id="Shopware\Core\Framework\Log\Monolog\DoctrineSQLHandler"/>

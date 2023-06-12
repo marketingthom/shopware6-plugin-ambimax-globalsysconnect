@@ -19,7 +19,7 @@
     "require": {
         "ext-json": "*",
         "shopware/core": ">=6.4.0.0 <6.5",
-        "marketingthom/composer-package-globalsys-edcsdk": "1.2.*"
+        "marketingthom/composer-package-globalsys-edcsdk": "dev-main"
     },
     "extra": {
         "shopware-plugin-class": "Ambimax\\GlobalsysConnect\\AmbimaxGlobalsysConnect",
@@ -37,5 +37,11 @@
         "psr-4": {
             "Ambimax\\GlobalsysConnect\\": "src/"
         }
-    }
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url":  "git@github.com:marketingthom/composer-package-globalsys-edcsdk.git"
+        }
+    ]
 }

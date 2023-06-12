@@ -1,0 +1,58 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "77eda445a199796214815dbe54468c06",
+    "packages": [
+        {
+            "name": "marketingthom/composer-package-globalsys-edcsdk",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/marketingthom/composer-package-globalsys-edcsdk.git",
+                "reference": "e57ba73f837b6d1e53b41346a970a87cf783df7c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/marketingthom/composer-package-globalsys-edcsdk/zipball/e57ba73f837b6d1e53b41346a970a87cf783df7c",
+                "reference": "e57ba73f837b6d1e53b41346a970a87cf783df7c",
+                "shasum": ""
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Globalsys\\EDCSDK\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dominik Wißler",
+                    "email": "dw@ambimax.de"
+                }
+            ],
+            "description": "A PHP SDK to communicate with the Globalsys EDC API.",
+            "support": {
+                "source": "https://github.com/marketingthom/composer-package-globalsys-edcsdk/tree/main",
+                "issues": "https://github.com/marketingthom/composer-package-globalsys-edcsdk/issues"
+            },
+            "time": "2023-03-16T14:20:41+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "marketingthom/composer-package-globalsys-edcsdk": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.2.0"
+}

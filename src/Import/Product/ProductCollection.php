@@ -179,6 +179,8 @@ class ProductCollection
             [
                 'Available products:' => $body['information']['count'],
                 'HTTP Code:' => $httpCode,
+                'Request' => $response,
+                'params' => $queryParameters,
             ]);
 
         $productPagesLeft = true;
