@@ -46,7 +46,12 @@ class OrderArticleModel implements ProcessorInterface
         $orderArticle->setOrderarticlesName($lineItem->getLabel());
         $orderArticle->setOrderarticlesTotalprice($lineItem->getTotalPrice());
         $orderArticle->setOrderarticlesAmount($lineItem->getQuantity());
-        $orderArticle->setOrderarticlesVat($lineItem->getPrice()->getCalculatedTaxes()->first()->getTaxRate());
+        $calculatedTaxes = $lineItem->getPrice()->getCalculatedTaxes();
+        if($calculatedTaxes->count()) {
+            $orderArticle->setOrderarticlesVat($calculatedTaxes->first()->getTaxRate());
+        } else {
+            $orderArticle->setOrderarticlesVat(0);
+        }
         return $orderArticle;
     }
 
